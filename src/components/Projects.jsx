@@ -8,7 +8,7 @@ const projects = [
     description:
       "I built a comprehensive Full-Stack Library Management System using Django REST Framework, React, and Bootstrap, featuring JWT-based Role-Based Access Control (RBAC) for Admin, Librarian, and Member roles. The system includes 15+ RESTful APIs to efficiently manage borrowing, returns, reservations, and real-time availability for a collection of 1,000+ books and 500+ users. I integrated Celery and Redis for automated email notifications, achieving a 95% on-time delivery rate. Additionally, I enhanced the Django Admin interface and created custom dashboards with advanced search functionality, ensuring seamless management of extensive book collections.",
     github: "https://github.com/paras11420/Library_Management_System",
-    live: "https://parking-system.vercel.app",
+    live: "https://library-management-system-five-chi.vercel.app/",
     tech: [
       "Python",
       "Django",
