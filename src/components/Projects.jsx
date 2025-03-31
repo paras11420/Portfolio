@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CountUp from "react-countup";
 
-// Sample projects array – update this with your actual projects data
 const projects = [
   {
     title: "📚 Library Management System",
@@ -48,7 +47,7 @@ const projects = [
     stats: [
       { label: "Reducing Lag By", value: 25, suffix: "%" },
       { label: "Boosting Interactivity", value: 35, suffix: "%" },
-      { label: "cutting computation time", value: 20, suffix: "%" },
+      { label: "Cutting Computation Time", value: 20, suffix: "%" },
     ],
   },
   {
@@ -61,25 +60,21 @@ const projects = [
     stats: [
       { label: "Reducing Lag By", value: 25, suffix: "%" },
       { label: "Boosting Interactivity", value: 35, suffix: "%" },
-      { label: "cutting computation time", value: 20, suffix: "%" },
+      { label: "Cutting Computation Time", value: 20, suffix: "%" },
     ],
   },
   {
     title: "🎥 Netflix Clone",
     description:
-      "I built a pixel-perfect replica of the Netflix India landing page using HTML5, CSS3, and JavaScript. Demonstrated expertise in advanced CSS styling, including flexbox, grid, positioning, and media queries for seamless responsiveness across all devices. Integrated interactive UI elements, hover effects, and a functional email input with CTA, simulating real-world user experience. Optimized performance and deployed on Vercel for a smooth, high-quality experience..",
+      "I built a pixel-perfect replica of the Netflix India landing page using HTML5, CSS3, and JavaScript. Demonstrated expertise in advanced CSS styling, including flexbox, grid, positioning, and media queries for seamless responsiveness across all devices. Integrated interactive UI elements, hover effects, and a functional email input with CTA, simulating real-world user experience. Optimized performance and deployed on Vercel for a smooth, high-quality experience.",
     github: "https://github.com/paras11420/netlify",
     live: "https://netlify-ruddy.vercel.app/",
     tech: ["HTML5", "CSS3", "Vanilla JavaScript"],
     stats: [
+      { label: "Lines of Code for Pixel-Perfect UI", value: 1000, suffix: "+" },
+      { label: "Responsiveness Across Devices", value: 100, suffix: "%" },
       {
-        label: "Lines of code written for pixel-perfect UI",
-        value: 1000,
-        suffix: "+",
-      },
-      { label: "Responsiveness across all devices", value: 100, suffix: "%" },
-      {
-        label: " Faster rendering achieved through optimized styling",
+        label: "Faster Rendering Through Optimized Styling",
         value: 20,
         suffix: "%",
       },
@@ -91,25 +86,28 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <section id="projects" className="bg-gray-200 py-20 px-8 text-center">
-      <h2 className="text-4xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-600">
+    <section
+      id="projects"
+      className="bg-gray-200 py-20 px-4 sm:px-8 text-center"
+    >
+      <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-600">
         Projects
       </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="p-6 bg-white rounded-2xl shadow-lg transition-transform hover:scale-105"
+            className="p-4 sm:p-6 bg-white rounded-2xl shadow-lg transition-transform hover:scale-105"
           >
-            <h3 className="text-xl font-semibold text-violet-500">
+            <h3 className="text-lg sm:text-xl font-semibold text-violet-500">
               {project.title}
             </h3>
-            <p className="mt-2 text-gray-700">
+            <p className="mt-2 text-sm sm:text-base text-gray-700">
               {project.description.substring(0, 100)}...
             </p>
             <button
-              className="mt-4 bg-cyan-400 text-white px-4 py-2 rounded hover:bg-cyan-500 transition-colors"
+              className="mt-4 bg-cyan-400 text-white px-3 py-2 rounded hover:bg-cyan-500 transition-colors text-sm sm:text-base"
               onClick={() => setSelectedProject(project)}
             >
               View Details
@@ -122,44 +120,44 @@ const Projects = () => {
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white rounded-2xl p-8 max-w-3xl w-full relative"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 max-w-3xl w-full relative overflow-y-auto max-h-full"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.7 }}
             >
               <button
-                className="absolute top-4 right-4 text-gray-700 font-bold text-2xl"
+                className="absolute top-4 right-4 text-gray-700 dark:text-gray-300 font-bold text-2xl"
                 onClick={() => setSelectedProject(null)}
               >
                 &times;
               </button>
-              <div className="flex flex-col gap-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-violet-500">
+              <div className="flex flex-col md:flex-row gap-4 text-left">
+                <div className="flex-1">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-violet-500">
                     {selectedProject.title}
                   </h3>
-                  <p className="mt-2 text-gray-700">
+                  <p className="mt-2 text-sm sm:text-base text-gray-700 dark:text-gray-300">
                     {selectedProject.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {selectedProject.tech.map((tech, i) => (
                       <motion.div
                         key={i}
-                        className="relative group p-2 bg-white rounded-lg shadow-md cursor-pointer"
+                        className="relative group p-2 bg-white dark:bg-gray-700 rounded-lg shadow-md cursor-pointer"
                         whileHover={{ scale: 1.1 }}
                       >
-                        <div className="bg-violet-500 text-white px-3 py-1 rounded-full text-sm">
+                        <div className="bg-violet-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm">
                           {tech}
                         </div>
                         <motion.div
-                          className="absolute bottom-[-24px] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-gray-700 text-white rounded px-2 py-1"
+                          className="absolute bottom-[-24px] left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-xs bg-gray-700 dark:bg-gray-600 text-white rounded px-2 py-1"
                           transition={{ duration: 0.3 }}
                         >
                           {tech}
@@ -167,35 +165,36 @@ const Projects = () => {
                       </motion.div>
                     ))}
                   </div>
-                </div>
-                {/* Key Metrics Section */}
-                {selectedProject.stats && (
-                  <div className="mt-6">
-                    <h4 className="text-xl font-bold text-violet-500 mb-2">
-                      Key Metrics
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {selectedProject.stats.map((stat, i) => (
-                        <div key={i} className="text-center">
-                          <p className="text-2xl font-bold text-cyan-400">
-                            <CountUp
-                              end={stat.value}
-                              duration={2}
-                              suffix={stat.suffix}
-                            />
-                          </p>
-                          <p className="text-gray-700">{stat.label}</p>
-                        </div>
-                      ))}
+                  {selectedProject.stats && (
+                    <div className="mt-6">
+                      <h4 className="text-xl sm:text-2xl font-bold text-violet-500 mb-2">
+                        Key Metrics
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {selectedProject.stats.map((stat, i) => (
+                          <div key={i} className="text-center">
+                            <p className="text-lg sm:text-2xl font-bold text-cyan-400">
+                              <CountUp
+                                end={stat.value}
+                                duration={2}
+                                suffix={stat.suffix}
+                              />
+                            </p>
+                            <p className="text-xs sm:text-base text-gray-700">
+                              {stat.label}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-                <div className="mt-6 flex gap-4">
+                  )}
+                </div>
+                <div className="mt-4 md:mt-0 flex flex-col gap-4 justify-center">
                   <a
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-cyan-400 text-white px-4 py-2 rounded hover:bg-cyan-500 transition-colors"
+                    className="bg-cyan-400 text-white px-4 py-2 rounded hover:bg-cyan-500 transition-colors text-sm sm:text-base"
                   >
                     GitHub
                   </a>
@@ -203,7 +202,7 @@ const Projects = () => {
                     href={selectedProject.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-violet-500 text-white px-4 py-2 rounded hover:bg-violet-600 transition-colors"
+                    className="bg-violet-500 text-white px-4 py-2 rounded hover:bg-violet-600 transition-colors text-sm sm:text-base"
                   >
                     Live Demo
                   </a>

@@ -9,7 +9,9 @@ const Footer = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <p>© {new Date().getFullYear()} Paras Goel. All rights reserved.</p>
+      <p className="text-sm sm:text-base">
+        © {new Date().getFullYear()} Paras Goel. All rights reserved.
+      </p>
     </motion.footer>
   );
 };
